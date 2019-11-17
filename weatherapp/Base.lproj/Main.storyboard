@@ -49,7 +49,7 @@
                                         <constraint firstAttribute="bottom" secondItem="JU0-Yz-nA2" secondAttribute="bottom" id="vgv-4y-vHa"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="scrollView" destination="JU0-Yz-nA2" id="sGm-Ed-L54"/>
                                     <outlet property="stackView" destination="mzb-Df-Rnd" id="n2c-yV-SPA"/>

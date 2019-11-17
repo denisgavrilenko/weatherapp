@@ -21,6 +21,7 @@
 		C4DF73372381CA7C0089FF5C /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF73362381CA7C0089FF5C /* ForecastService.swift */; };
 		C4DF73392381CE990089FF5C /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF73382381CE990089FF5C /* ImageService.swift */; };
 		C4DF733B2381D6DC0089FF5C /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF733A2381D6DC0089FF5C /* OpenWeather.swift */; };
+		C4DF733D2381FBBB0089FF5C /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DF733C2381FBBB0089FF5C /* Forecast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C4DF73362381CA7C0089FF5C /* ForecastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastService.swift; sourceTree = "<group>"; };
 		C4DF73382381CE990089FF5C /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		C4DF733A2381D6DC0089FF5C /* OpenWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
+		C4DF733C2381FBBB0089FF5C /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,18 +77,19 @@
 				C4B391B323819CE4003E54CD /* AppDelegate.swift */,
 				C4B391B523819CE4003E54CD /* SceneDelegate.swift */,
 				C4B391B723819CE4003E54CD /* WeatherViewController.swift */,
+				C466D94D2381A73D00FE8FD0 /* ForecastView.swift */,
+				C4BAC6742381AF830016930C /* ForecastView.xib */,
+				C466D94F2381A7AE00FE8FD0 /* DayForecastTableViewCell.swift */,
+				C4DF73342381C6180089FF5C /* RightDirectedScrollView.swift */,
+				C4BAC67E2381B1640016930C /* NibBasedView.swift */,
+				C4DF73362381CA7C0089FF5C /* ForecastService.swift */,
+				C4DF73382381CE990089FF5C /* ImageService.swift */,
+				C4DF733A2381D6DC0089FF5C /* OpenWeather.swift */,
+				C4DF733C2381FBBB0089FF5C /* Forecast.swift */,
 				C4B391B923819CE4003E54CD /* Main.storyboard */,
 				C4B391BC23819CE5003E54CD /* Assets.xcassets */,
 				C4B391BE23819CE5003E54CD /* LaunchScreen.storyboard */,
 				C4B391C123819CE5003E54CD /* Info.plist */,
-				C466D94D2381A73D00FE8FD0 /* ForecastView.swift */,
-				C4BAC6742381AF830016930C /* ForecastView.xib */,
-				C466D94F2381A7AE00FE8FD0 /* DayForecastTableViewCell.swift */,
-				C4BAC67E2381B1640016930C /* NibBasedView.swift */,
-				C4DF73342381C6180089FF5C /* RightDirectedScrollView.swift */,
-				C4DF73362381CA7C0089FF5C /* ForecastService.swift */,
-				C4DF73382381CE990089FF5C /* ImageService.swift */,
-				C4DF733A2381D6DC0089FF5C /* OpenWeather.swift */,
 			);
 			path = weatherapp;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				C4DF733B2381D6DC0089FF5C /* OpenWeather.swift in Sources */,
 				C466D9502381A7AE00FE8FD0 /* DayForecastTableViewCell.swift in Sources */,
 				C4B391B623819CE4003E54CD /* SceneDelegate.swift in Sources */,
+				C4DF733D2381FBBB0089FF5C /* Forecast.swift in Sources */,
 				C466D94E2381A73D00FE8FD0 /* ForecastView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

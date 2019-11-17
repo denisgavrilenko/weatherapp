@@ -22,27 +22,27 @@ extension Service {
 
                 let dt: Int
                 let main: Main
-                let weather: Weather
+                let weather: [Weather]
             }
 
             let list: [Forecast]
 
-            var toForecast: Service.FiveDayForecast {
+            var toForecast: Weather.FiveDayForecast {
                 let forcasts = list.sorted {
                     $0.dt < $1.dt
-                }.reduce([Service.Forecast]()) { (res, value) in
-                    return res + [Service.Forecast(temperature: value.main.temp,
+                }.reduce([Weather.Forecast]()) { (res, value) in
+                    return res + [Weather.Forecast(temperature: value.main.temp,
                                                    date: Date(timeIntervalSince1970: TimeInterval(value.dt)),
-                                                   imagePath: value.weather.icon)]
-                }.chunked(into: Service.FiveDayForecast.numberPerDay)
-                return Service.FiveDayForecast(days: forcasts)
+                                                   imagePath: value.weather.first!.icon)]
+                }.chunked(into: Weather.FiveDayForecast.numberPerDay)
+                return Weather.FiveDayForecast(days: forcasts)
             }
         }
 
         private let session = URLSession(configuration: .default)
 
-        func forecast(completion: @escaping (Result<Service.FiveDayForecast, Service.Error>) -> Void) {
-            session.dataTask(with: URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&APPID=a541f24c3ad30edbf9054f27bb381e90")!) { (data, response, error) in
+        func forecast(completion: @escaping (Result<Weather.FiveDayForecast, Service.Error>) -> Void) {
+            session.dataTask(with: URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&units=metric&APPID=a541f24c3ad30edbf9054f27bb381e90")!) { (data, response, error) in
                 if let _ = error {
                     completion(.failure(.network))
                     return
@@ -53,13 +53,12 @@ extension Service {
                 }
 
                 do {
-                    let decoder = JSONDecoder()
-                    let response = try decoder.decode(ForecastResponse.self, from: data)
+                    let response = try JSONDecoder().decode(ForecastResponse.self, from: data)
                     completion(.success(response.toForecast))
                 } catch {
                     completion(.failure(.responseFormat))
                 }
-            }
+            }.resume()
         }
 
         func image(for imagePath: String, completion: @escaping (Result<UIImage, Service.Error>) -> Void) {
@@ -77,7 +76,7 @@ extension Service {
                     return
                 }
                 completion(.success(image))
-            }
+            }.resume()
         }
     }
 }

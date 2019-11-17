@@ -43,7 +43,7 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="khM-sB-Pfw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2lo-FF-u7Q"/>
                 <constraint firstItem="khM-sB-Pfw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Qi8-mU-fQ8"/>
@@ -52,6 +52,12 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="dateLabel" destination="jKD-1l-N0r" id="fc1-nT-fdd"/>
+                <outlet property="iconImageView" destination="agK-gL-WUI" id="zXS-Lu-Ndx"/>
+                <outlet property="temperatureLabel" destination="O8R-wc-XSx" id="zh5-LX-Vxa"/>
+                <outlet property="timeLabel" destination="rPJ-bK-5Q8" id="LBt-xZ-Gcf"/>
+            </connections>
             <point key="canvasLocation" x="58.695652173913047" y="-102.45535714285714"/>
         </view>
     </objects>
