@@ -10,7 +10,7 @@
         <scene sceneID="q4O-Cy-6xq">
             <objects>
                 <tableViewController id="6FO-Y4-cee" customClass="WeatherViewController" customModule="weatherapp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4wr-iI-cgW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4wr-iI-cgW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -22,7 +22,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JU0-Yz-nA2">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JU0-Yz-nA2" customClass="RightDirectedScrollView" customModule="weatherapp" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="100" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mzb-Df-Rnd">
