@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C466D94E2381A73D00FE8FD0 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C466D94D2381A73D00FE8FD0 /* ForecastView.swift */; };
+		C466D9502381A7AE00FE8FD0 /* DayForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C466D94F2381A7AE00FE8FD0 /* DayForecastTableViewCell.swift */; };
 		C4B391B423819CE4003E54CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B391B323819CE4003E54CD /* AppDelegate.swift */; };
 		C4B391B623819CE4003E54CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B391B523819CE4003E54CD /* SceneDelegate.swift */; };
 		C4B391B823819CE4003E54CD /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B391B723819CE4003E54CD /* WeatherViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C466D94D2381A73D00FE8FD0 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
+		C466D94F2381A7AE00FE8FD0 /* DayForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecastTableViewCell.swift; sourceTree = "<group>"; };
 		C4B391B023819CE4003E54CD /* weatherapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B391B323819CE4003E54CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4B391B523819CE4003E54CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				C4B391BC23819CE5003E54CD /* Assets.xcassets */,
 				C4B391BE23819CE5003E54CD /* LaunchScreen.storyboard */,
 				C4B391C123819CE5003E54CD /* Info.plist */,
+				C466D94D2381A73D00FE8FD0 /* ForecastView.swift */,
+				C466D94F2381A7AE00FE8FD0 /* DayForecastTableViewCell.swift */,
 			);
 			path = weatherapp;
 			sourceTree = "<group>";
@@ -140,7 +146,9 @@
 			files = (
 				C4B391B823819CE4003E54CD /* WeatherViewController.swift in Sources */,
 				C4B391B423819CE4003E54CD /* AppDelegate.swift in Sources */,
+				C466D9502381A7AE00FE8FD0 /* DayForecastTableViewCell.swift in Sources */,
 				C4B391B623819CE4003E54CD /* SceneDelegate.swift in Sources */,
+				C466D94E2381A73D00FE8FD0 /* ForecastView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
