@@ -8,6 +8,6 @@
 
 import UIKit
 
-class ForecastView: UIView {
+class ForecastView: UIView, NibBasedView {
 
 }

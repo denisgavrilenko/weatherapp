@@ -16,34 +16,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="day_forecast_cell" id="v4L-r5-nU3" customClass="DayForecastTableViewCell" customModule="weatherapp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="250.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="100.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v4L-r5-nU3" id="Dwx-q0-cGH">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JU0-Yz-nA2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="250.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mzb-Df-Rnd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="720" height="250.5"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqD-Le-BzE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="250.5"/>
-                                                            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="200" id="gtR-cv-lZV"/>
-                                                                <constraint firstAttribute="height" constant="250" id="mTJ-q6-JQc"/>
-                                                            </constraints>
-                                                        </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3l-Ch-73k">
-                                                            <rect key="frame" x="220" y="0.0" width="500" height="250.5"/>
-                                                            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="500" id="0az-cT-1wP"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="100" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mzb-Df-Rnd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="500" height="100.5"/>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -66,7 +49,11 @@
                                         <constraint firstAttribute="bottom" secondItem="JU0-Yz-nA2" secondAttribute="bottom" id="vgv-4y-vHa"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="scrollView" destination="JU0-Yz-nA2" id="sGm-Ed-L54"/>
+                                    <outlet property="stackView" destination="mzb-Df-Rnd" id="n2c-yV-SPA"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

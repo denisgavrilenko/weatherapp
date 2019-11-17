@@ -15,6 +15,8 @@
 		C4B391BB23819CE4003E54CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4B391B923819CE4003E54CD /* Main.storyboard */; };
 		C4B391BD23819CE5003E54CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4B391BC23819CE5003E54CD /* Assets.xcassets */; };
 		C4B391C023819CE5003E54CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4B391BE23819CE5003E54CD /* LaunchScreen.storyboard */; };
+		C4BAC6752381AF830016930C /* ForecastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4BAC6742381AF830016930C /* ForecastView.xib */; };
+		C4BAC67F2381B1640016930C /* NibBasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BAC67E2381B1640016930C /* NibBasedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		C4B391BC23819CE5003E54CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4B391BF23819CE5003E54CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4B391C123819CE5003E54CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4BAC6742381AF830016930C /* ForecastView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastView.xib; sourceTree = "<group>"; };
+		C4BAC67E2381B1640016930C /* NibBasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibBasedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +72,9 @@
 				C4B391BE23819CE5003E54CD /* LaunchScreen.storyboard */,
 				C4B391C123819CE5003E54CD /* Info.plist */,
 				C466D94D2381A73D00FE8FD0 /* ForecastView.swift */,
+				C4BAC6742381AF830016930C /* ForecastView.xib */,
 				C466D94F2381A7AE00FE8FD0 /* DayForecastTableViewCell.swift */,
+				C4BAC67E2381B1640016930C /* NibBasedView.swift */,
 			);
 			path = weatherapp;
 			sourceTree = "<group>";
@@ -134,6 +140,7 @@
 				C4B391C023819CE5003E54CD /* LaunchScreen.storyboard in Resources */,
 				C4B391BD23819CE5003E54CD /* Assets.xcassets in Resources */,
 				C4B391BB23819CE4003E54CD /* Main.storyboard in Resources */,
+				C4BAC6752381AF830016930C /* ForecastView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +153,7 @@
 			files = (
 				C4B391B823819CE4003E54CD /* WeatherViewController.swift in Sources */,
 				C4B391B423819CE4003E54CD /* AppDelegate.swift in Sources */,
+				C4BAC67F2381B1640016930C /* NibBasedView.swift in Sources */,
 				C466D9502381A7AE00FE8FD0 /* DayForecastTableViewCell.swift in Sources */,
 				C4B391B623819CE4003E54CD /* SceneDelegate.swift in Sources */,
 				C466D94E2381A73D00FE8FD0 /* ForecastView.swift in Sources */,
