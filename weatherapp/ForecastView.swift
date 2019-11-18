@@ -19,9 +19,7 @@ class ForecastView: UIView, NibBasedView {
         timeLabel.text = model.time
         dateLabel.text = model.date
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let icon = model.icon() else {
-                return
-            }
+            guard let icon = model.icon() else { return }
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 self.iconImageView.image = icon

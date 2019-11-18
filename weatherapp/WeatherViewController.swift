@@ -24,7 +24,7 @@ extension ForecastViewModel {
          timeFormatter: DateFormatter,
          dateFormatter: DateFormatter,
          imageProvider: ImageProvider,
-         scale: Int = Int(UIScreen.main.scale)) {
+         scale: Int = 2) {
         self.temperature = String(forecast.temperature)
         self.time = timeFormatter.string(from: forecast.date)
         self.date = dateFormatter.string(from: forecast.date)

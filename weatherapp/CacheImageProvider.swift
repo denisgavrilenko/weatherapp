@@ -34,8 +34,6 @@ class CacheImageProvider: ImageProvider {
             if case let .success(resultImage) = result {
                 cache.setImage(resultImage, for: key)
                 image = resultImage
-            } else {
-                
             }
             semaphore.signal()
         }
