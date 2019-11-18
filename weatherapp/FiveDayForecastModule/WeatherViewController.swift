@@ -13,9 +13,9 @@ protocol ImageProvider {
 }
 
 class WeatherViewController: UITableViewController {
-    private var service: ForecastService!
-    private var imageProvider: ImageProvider!
-    private var forecast = [[ForecastViewModel]]()
+    typealias Forecasts = [ForecastViewModel]
+    typealias DataSource = Weather.WeatherDataSource<Forecasts, DayForecastTableViewCell>
+    private var serviceLocator: WeatherServiceLocator!
     private let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -26,21 +26,26 @@ class WeatherViewController: UITableViewController {
         formatter.dateFormat = "MMM d, yyyy"
         return formatter
     }()
+    private var dataSource: DataSource?
 
     private func update(with forecast: Weather.FiveDayForecast) {
-        self.forecast = forecast.days.map { day in
+        let forecasts = forecast.days.map { day in
             day.map { cast in
                 ForecastViewModel(cast,
                                   timeFormatter: timeFormatter,
                                   dateFormatter: dateFormatter,
-                                  imageProvider: imageProvider)
+                                  imageProvider: serviceLocator.images)
             }
         }
+        dataSource = DataSource(items: forecasts, cellID: "day_forecast_cell") { (cell, item) in
+            cell.set(day: item)
+        }
+        tableView.dataSource = dataSource
         tableView.reloadData()
     }
 
-    private func loadForecast() {
-        service.forecast { [weak self] result in
+    private func loadForecasts() {
+        serviceLocator.forecast.forecast { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {
@@ -53,26 +58,14 @@ class WeatherViewController: UITableViewController {
         }
     }
 
-    func set(service: ForecastService, imageProvider: ImageProvider) {
-        self.service = service
-        self.imageProvider = imageProvider
-        self.loadForecast()
+    func set(service: WeatherServiceLocator) {
+        self.serviceLocator = service
+        loadForecasts()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         tableView.reloadData()
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return forecast.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "day_forecast_cell", for: indexPath) as! DayForecastTableViewCell
-        cell.set(day: forecast[indexPath.row])
-        return cell
     }
 }
 
