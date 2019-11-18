@@ -61,8 +61,8 @@ extension Service {
             }.resume()
         }
 
-        func image(for imagePath: String, completion: @escaping (Result<UIImage, Service.Error>) -> Void) {
-            session.dataTask(with: URL(string: "https://api.openweathermap.org/img/wn/" + imagePath + "@2x.png")!) { (data, response, error) in
+        func image(for imagePath: String, scale: Int, completion: @escaping (Result<UIImage, Service.Error>) -> Void) {
+            session.dataTask(with: URL(string: "https://openweathermap.org/img/wn/" + imagePath + "@\(scale)x.png")!) { (data, response, error) in
                 if let _ = error {
                     completion(.failure(.network))
                     return

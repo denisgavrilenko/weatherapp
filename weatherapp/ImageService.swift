@@ -9,5 +9,5 @@
 import UIKit
 
 protocol ImageService {
-    func image(for imagePath: String, completion: @escaping (Result<UIImage, Service.Error>) -> Void)
+    func image(for imagePath: String, scale: Int, completion: @escaping (Result<UIImage, Service.Error>) -> Void)
 }

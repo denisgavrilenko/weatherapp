@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ImageProvider {
+    func image(for key: String, scale: Int) -> UIImage?
+}
+
 struct ForecastViewModel {
     let temperature: String
     let time: String
@@ -16,19 +20,21 @@ struct ForecastViewModel {
 }
 
 extension ForecastViewModel {
-    init(_ forecast: Weather.Forecast, timeFormatter: DateFormatter, dateFormatter: DateFormatter, imageService: ImageService) {
+    init(_ forecast: Weather.Forecast,
+         timeFormatter: DateFormatter,
+         dateFormatter: DateFormatter,
+         imageProvider: ImageProvider,
+         scale: Int = Int(UIScreen.main.scale)) {
         self.temperature = String(forecast.temperature)
         self.time = timeFormatter.string(from: forecast.date)
         self.date = dateFormatter.string(from: forecast.date)
-        self.icon = {
-            return nil
-//            imageService.image(for: forecast.imagePath, completion: <#T##(Result<UIImage, Service.Error>) -> Void#>)
-        }
+        self.icon = { imageProvider.image(for: forecast.imagePath, scale: scale) }
     }
 }
 
 class WeatherViewController: UITableViewController {
-    private let service = Service.OpenWeather()
+    private var service: ForecastService!
+    private var imageProvider: ImageProvider!
     private var forecast = [[ForecastViewModel]]()
     private let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -41,21 +47,25 @@ class WeatherViewController: UITableViewController {
         return formatter
     }()
 
+    func set(service: ForecastService, imageProvider: ImageProvider) {
+        self.service = service
+        self.imageProvider = imageProvider
+        self.loadForecast()
+    }
+
     private func update(with forecast: Weather.FiveDayForecast) {
         self.forecast = forecast.days.map { day in
             day.map { cast in
                 ForecastViewModel(cast,
                                   timeFormatter: timeFormatter,
                                   dateFormatter: dateFormatter,
-                                  imageService: service)
+                                  imageProvider: imageProvider)
             }
         }
         tableView.reloadData()
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    private func loadForecast() {
         service.forecast { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
@@ -67,6 +77,12 @@ class WeatherViewController: UITableViewController {
                 }
             }
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
