@@ -26,23 +26,14 @@ extension Service.OpenWeather {
 
         let list: [Forecast]
 
-        var toForecast: Weather.FiveDayForecast {
-            let forcasts = list.sorted {
+        var toForecast: [Weather.Forecast] {
+            return list.sorted {
                 $0.dt < $1.dt
-            }.reduce([Weather.Forecast]()) { (res, value) in
-                return res + [Weather.Forecast(temperature: value.main.temp,
-                                               date: Date(timeIntervalSince1970: TimeInterval(value.dt)),
-                                               imagePath: value.weather.first!.icon)]
-            }.chunked(into: Weather.FiveDayForecast.numberPerDay)
-            return Weather.FiveDayForecast(days: forcasts)
-        }
-    }
-}
-
-fileprivate extension Array {
-    func chunked(into size: Int) -> [[Element]] {
-        return stride(from: 0, to: count, by: size).map {
-            Array(self[$0 ..< Swift.min($0 + size, count)])
+            }.map { value in
+                Weather.Forecast(temperature: value.main.temp,
+                                 date: Date(timeIntervalSince1970: TimeInterval(value.dt)),
+                                 imagePath: value.weather.first!.icon)
+            }
         }
     }
 }

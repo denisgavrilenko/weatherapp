@@ -10,7 +10,7 @@ import UIKit
 
 extension Weather {
     class WeatherDataSource<Item, Cell: UITableViewCell>: NSObject, UITableViewDataSource {
-        private var items: [Item]
+        private let items: [Item]
         private let cellID: String
         private let config: (Cell, Item) -> ()
 

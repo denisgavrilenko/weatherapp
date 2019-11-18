@@ -28,16 +28,17 @@ class WeatherViewController: UITableViewController {
     }()
     private var dataSource: DataSource?
 
-    private func update(with forecast: Weather.FiveDayForecast) {
-        let forecasts = forecast.days.map { day in
-            day.map { cast in
-                ForecastViewModel(cast,
-                                  timeFormatter: timeFormatter,
-                                  dateFormatter: dateFormatter,
-                                  imageProvider: serviceLocator.images)
-            }
+    private func update(with forecasts: [Weather.Forecast]) {
+        let viewModels = forecasts.map { cast in
+            ForecastViewModel(cast,
+                              timeFormatter: timeFormatter,
+                              dateFormatter: dateFormatter,
+                              imageProvider: serviceLocator.images)
+        }.splitBy { (first, second) -> Bool in
+            first.date != second.date
         }
-        dataSource = DataSource(items: forecasts, cellID: "day_forecast_cell") { (cell, item) in
+
+        dataSource = DataSource(items: viewModels, cellID: "day_forecast_cell") { (cell, item) in
             cell.set(day: item)
         }
         tableView.dataSource = dataSource
@@ -66,6 +67,27 @@ class WeatherViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+}
+
+fileprivate extension Array {
+    func splitBy(closure: (Element, Element) -> Bool) -> [[Element]] {
+        guard !isEmpty else { return [[Element]]() }
+        var prev = first!
+        var next = [Element]()
+        var res = reduce(into: [[Element]]()) { (res, elem) in
+            if closure(prev, elem) {
+                res.append(next)
+                next = [elem]
+            } else {
+                next.append(elem)
+            }
+            prev = elem
+        }
+        if !next.isEmpty {
+            res.append(next)
+        }
+        return res
     }
 }
 

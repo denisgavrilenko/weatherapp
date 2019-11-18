@@ -106,8 +106,8 @@
 				C466D94D2381A73D00FE8FD0 /* ForecastView.swift */,
 				C466D94F2381A7AE00FE8FD0 /* DayForecastTableViewCell.swift */,
 				C4FBB3DE2382D794002B1F43 /* ForecastViewModel.swift */,
-				C4B391B723819CE4003E54CD /* WeatherViewController.swift */,
 				C4FBB3E02382E1BF002B1F43 /* WeatherDataSource.swift */,
+				C4B391B723819CE4003E54CD /* WeatherViewController.swift */,
 			);
 			path = FiveDayForecastModule;
 			sourceTree = "<group>";

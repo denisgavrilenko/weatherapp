@@ -10,10 +10,36 @@ import UIKit
 
 extension Service {
     class OpenWeather: ForecastService {
-        private let session = URLSession(configuration: .default)
+        enum City: String {
+            case london = "London,uk"
+            static let key = "q"
+            var query: String {
+                Self.key + "=" + rawValue
+            }
+        }
 
-        func forecast(completion: @escaping (Result<Weather.FiveDayForecast, Service.Error>) -> Void) {
-            session.dataTask(with: URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=London,uk&units=metric&APPID=a541f24c3ad30edbf9054f27bb381e90")!) { (data, response, error) in
+        enum Units: String {
+            case metric = "metric"
+            static let key = "units"
+            var query: String {
+                Self.key + "=" + rawValue
+            }
+        }
+
+        private let session = URLSession(configuration: .default)
+        private let city: City
+        private let units: Units
+        private let key: String
+
+        init(key: String, city: City = .london, units: Units = .metric) {
+            self.key = key
+            self.city = city
+            self.units = units
+        }
+
+        func forecast(completion: @escaping (Result<[Weather.Forecast], Service.Error>) -> Void) {
+            session.dataTask(with: URL(string: "https://api.openweathermap.org/data/2.5/forecast?" + city.query +
+                "&" + units.query + "&APPID=" + key)!) { (data, response, error) in
                 if let _ = error {
                     completion(.failure(.network))
                     return

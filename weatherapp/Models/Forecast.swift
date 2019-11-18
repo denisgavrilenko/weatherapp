@@ -14,9 +14,4 @@ enum Weather {
         let date: Date
         let imagePath: String
     }
-
-    struct FiveDayForecast {
-        static let numberPerDay = 8
-        let days: [[Forecast]]
-    }
 }
