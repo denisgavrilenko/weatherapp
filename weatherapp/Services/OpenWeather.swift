@@ -9,7 +9,7 @@
 import UIKit
 
 extension Service {
-    class OpenWeather: ForecastService {
+    class OpenWeather: ForecastService, ImageService {
         enum City: String {
             case london = "London,uk"
             static let key = "q"

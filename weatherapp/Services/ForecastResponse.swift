@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Service.OpenWeather {
+extension Service {
     struct ForecastResponse: Codable {
         struct Forecast: Codable {
             struct Main: Codable {

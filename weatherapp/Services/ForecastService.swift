@@ -14,6 +14,6 @@ enum Service {
     }
 }
 
-protocol ForecastService: ImageService {
+protocol ForecastService {
     func forecast(completion: @escaping (Result<[Weather.Forecast], Service.Error>) -> Void)
 }

@@ -10,11 +10,15 @@ import Foundation
 
 extension Weather {
     class RealServiceLocator: WeatherServiceLocator {
-        lazy var forecast: ForecastService = {
+        private lazy var realService: ForecastService & ImageService = {
             Service.OpenWeather(key: "a541f24c3ad30edbf9054f27bb381e90")
         }()
+
+        var forecast: ForecastService {
+            realService
+        }
         lazy var images: ImageProvider = {
-            CacheImageProvider(service: forecast)
+            CacheImageProvider(service: realService)
         }()
     }
 }

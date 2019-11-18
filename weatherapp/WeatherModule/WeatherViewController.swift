@@ -15,7 +15,8 @@ protocol ImageProvider {
 class WeatherViewController: UITableViewController {
     typealias Forecasts = [ForecastViewModel]
     typealias DataSource = Weather.WeatherDataSource<Forecasts, DayForecastTableViewCell>
-    private var serviceLocator: WeatherServiceLocator!
+    private var services = [WeatherServiceLocator]()
+    private var index = 0
     private let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
@@ -28,12 +29,12 @@ class WeatherViewController: UITableViewController {
     }()
     private var dataSource: DataSource?
 
-    private func update(with forecasts: [Weather.Forecast]) {
+    private func update(with forecasts: [Weather.Forecast], images: ImageProvider) {
         let viewModels = forecasts.map { cast in
             ForecastViewModel(cast,
                               timeFormatter: timeFormatter,
                               dateFormatter: dateFormatter,
-                              imageProvider: serviceLocator.images)
+                              imageProvider: images)
         }.splitBy { (first, second) -> Bool in
             first.date != second.date
         }
@@ -45,28 +46,39 @@ class WeatherViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    private func loadForecasts() {
-        serviceLocator.forecast.forecast { [weak self] result in
+    private func loadForecasts(with service: WeatherServiceLocator) {
+        service.forecast.forecast { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {
                 case .failure(let error):
                     print(error)
                 case .success(let forecast):
-                    self.update(with: forecast)
+                    self.update(with: forecast, images: service.images)
                 }
             }
         }
     }
 
-    func set(service: WeatherServiceLocator) {
-        self.serviceLocator = service
-        loadForecasts()
+    func set(services: [WeatherServiceLocator]) {
+        precondition(!services.isEmpty)
+
+        self.services = services
+        loadForecasts(with: services.first!)
+        index = 0
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+
+    @IBAction func onChangeService(_ sender: UIBarButtonItem) {
+        index += 1
+        if index == services.count {
+            index = 0
+        }
+        loadForecasts(with: services[index])
     }
 }
 
