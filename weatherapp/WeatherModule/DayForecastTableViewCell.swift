@@ -17,7 +17,7 @@ class DayForecastTableViewCell: UITableViewCell, NibBasedView, HasID {
         if forecasts.count == count {
             return forecasts.reversed()
         }
-        stackView.arrangedSubviews.forEach { stackView.removeArrangedSubview($0) }
+        stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         forecasts.removeAll()
         for _ in 0..<count {
             let view = ForecastView.instantiateFromNib()!
