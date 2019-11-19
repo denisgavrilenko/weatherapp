@@ -15,7 +15,7 @@ protocol NibBasedView {
 
 extension NibBasedView where Self: UIView {
     static var nibName: String {
-        return "\(self)"
+        "\(self)"
     }
 
     static var nib: UINib {

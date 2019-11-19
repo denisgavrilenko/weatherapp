@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DayForecastTableViewCell: UITableViewCell {
+class DayForecastTableViewCell: UITableViewCell, NibBasedView, HasID {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
     private var forecasts = [ForecastView]()

@@ -39,8 +39,7 @@ class ForecastViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nib = UINib(nibName: "DayForecastTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "day_forecast_cell")
+        tableView.register(DayForecastTableViewCell.nib, forCellReuseIdentifier: DayForecastTableViewCell.id)
 
         let leftButton = UIBarButtonItem(title: "Next",
                                          style: .plain,
@@ -49,13 +48,8 @@ class ForecastViewController: UIViewController {
         self.navigationItem.rightBarButtonItem  = leftButton
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadNextForecast()
-    }
-
     private func reloadData(_ viewModels: [[ForecastViewModel]]) {
-        dataSource = DataSource(items: viewModels, cellID: "day_forecast_cell") { (cell, item) in
+        dataSource = DataSource(items: viewModels, cellID: DayForecastTableViewCell.id) { (cell, item) in
             cell.set(day: item)
         }
         tableView.dataSource = dataSource
@@ -77,6 +71,11 @@ class ForecastViewController: UIViewController {
                 self.reloadData(viewModels)
             }
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadNextForecast()
     }
 
     @IBAction func onChangeService(_ sender: UIBarButtonItem) {

@@ -23,9 +23,5 @@ extension Service {
                 completion(.failure(.responseFormat))
             }
         }
-
-        func image(for imagePath: String, scale: Int, completion: @escaping (Result<UIImage, Service.Error>) -> Void) {
-            
-        }
     }
 }
