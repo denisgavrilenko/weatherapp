@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="day_forecast_cell" id="zOd-hI-RrA" customClass="DayForecastTableViewCell" customModule="weatherapp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zOd-hI-RrA" id="f5v-Km-UHZ">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kxa-wc-t7j" customClass="RightDirectedScrollView" customModule="weatherapp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="500" placeholderIntrinsicHeight="100" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iZY-qz-rCG">
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="100.5"/>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="iZY-qz-rCG" firstAttribute="height" secondItem="Kxa-wc-t7j" secondAttribute="height" id="DTP-AX-Gdi"/>
+                            <constraint firstItem="iZY-qz-rCG" firstAttribute="leading" secondItem="NOU-VS-psx" secondAttribute="leading" id="aqa-EV-yBM"/>
+                            <constraint firstItem="iZY-qz-rCG" firstAttribute="trailing" secondItem="NOU-VS-psx" secondAttribute="trailing" id="xzK-02-bNV"/>
+                            <constraint firstItem="iZY-qz-rCG" firstAttribute="top" secondItem="Kxa-wc-t7j" secondAttribute="top" id="yEQ-lE-FD3"/>
+                            <constraint firstAttribute="bottom" secondItem="iZY-qz-rCG" secondAttribute="bottom" id="zoF-nO-b6K"/>
+                        </constraints>
+                        <viewLayoutGuide key="contentLayoutGuide" id="NOU-VS-psx"/>
+                        <viewLayoutGuide key="frameLayoutGuide" id="Hww-A8-IEI"/>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Kxa-wc-t7j" firstAttribute="leading" secondItem="f5v-Km-UHZ" secondAttribute="leading" id="8JR-7J-NPP"/>
+                    <constraint firstItem="Kxa-wc-t7j" firstAttribute="height" secondItem="f5v-Km-UHZ" secondAttribute="height" id="AJZ-rV-FCS"/>
+                    <constraint firstItem="Kxa-wc-t7j" firstAttribute="width" secondItem="f5v-Km-UHZ" secondAttribute="width" id="Ljw-gM-glD"/>
+                    <constraint firstAttribute="trailing" secondItem="Kxa-wc-t7j" secondAttribute="trailing" id="mj4-3T-Ve8"/>
+                    <constraint firstAttribute="bottom" secondItem="Kxa-wc-t7j" secondAttribute="bottom" id="okJ-zQ-98v"/>
+                    <constraint firstItem="Kxa-wc-t7j" firstAttribute="top" secondItem="f5v-Km-UHZ" secondAttribute="top" id="ymh-X2-8Qy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="scrollView" destination="Kxa-wc-t7j" id="XwY-1S-vlK"/>
+                <outlet property="stackView" destination="iZY-qz-rCG" id="Uwg-QR-69N"/>
+            </connections>
+            <point key="canvasLocation" x="135" y="189"/>
+        </tableViewCell>
+    </objects>
+</document>
