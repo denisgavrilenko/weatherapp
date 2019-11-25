@@ -9,7 +9,7 @@
 import Foundation
 
 enum Weather {
-    struct Forecast {
+    struct Forecast: Equatable {
         let temperature: Float
         let date: Date
         let imagePath: String
