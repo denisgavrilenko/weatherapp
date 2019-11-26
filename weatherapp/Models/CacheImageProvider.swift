@@ -16,7 +16,7 @@ protocol ImageCache {
 extension Weather {
     class CacheImageProvider: ImageProvider {
         private let cache: ImageCache
-        private let service:  ImageService
+        private let service: ImageService
 
         init(service: ImageService, cache: ImageCache = StandartImageCache()) {
             self.service =  service

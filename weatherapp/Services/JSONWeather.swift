@@ -10,13 +10,15 @@ import UIKit
 
 extension Service {
     class JSONService: ForecastService {
+        private let fileURL: URL
+
+        init(fileURL: URL) {
+            self.fileURL = fileURL
+        }
+
         func forecast(completion: @escaping (Result<[Weather.Forecast], Service.Error>) -> Void) {
-            guard let url = Bundle.main.url(forResource: "static", withExtension: "json") else {
-                completion(.failure(.responseFormat))
-                return
-            }
             do {
-                let data = try Data(contentsOf: url)
+                let data = try Data(contentsOf: fileURL)
                 let response = try JSONDecoder().decode(ForecastResponse.self, from: data)
                 completion(.success(response.toForecast))
             } catch {

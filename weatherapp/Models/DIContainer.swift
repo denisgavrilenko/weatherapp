@@ -17,7 +17,10 @@ class DIContainer {
     }()
 
     func forecast() -> UIViewController {
-        let weatherServices = EndlessSequence<ForecastService>(elements: [realService, Service.JSONService()])
+        let file = Bundle.main.url(forResource: "static", withExtension: "json")
+        precondition(file != nil, "Please, include static.json in bundle")
+        let staticSetvice = Service.JSONService(fileURL: file!)
+        let weatherServices = EndlessSequence<ForecastService>(elements: [realService, staticSetvice])
         let model = Weather.Weather(services: weatherServices)
         return ForecastViewController(model: model, images: imagesProvider)
     }

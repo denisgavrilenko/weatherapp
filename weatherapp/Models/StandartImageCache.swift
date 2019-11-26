@@ -19,5 +19,9 @@ extension Weather {
         func setImage(_ image: UIImage, for key: String) {
             cache.setObject(image, forKey: key as NSString)
         }
+
+        func reset() {
+            cache.removeAllObjects()
+        }
     }
 }
